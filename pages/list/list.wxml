@@ -1,0 +1,36 @@
+<!--pages/list/list.wxml-->
+
+<include src="./searchBar.wxml"/>
+
+<!-- 1.0 列表 -->
+<view class="cell" wx:for="{{listData}}" wx:key="item.id" bindtap='goToDetail' data-goodid="{{item.id}}">
+  <!-- 图片 -->
+  <view class="imageView">
+    <image src="{{item.images[0]}}" />
+  </view>
+  <!-- 内容描述 -->
+  <view class="meta">
+    <text class="name">{{item.name}}</text>
+    <text class="phone">电话：{{item.phone}}</text>
+    <text class="address">地址：{{item.address}}</text>
+    <text class="time">营业时间：{{item.businessHours}}</text>
+  </view>
+  <!-- 评分 -->
+  <view class="score">
+    {{item.score}}
+  </view>
+</view>
+<!-- 加载更多提示 -->
+<view>
+  <block wx:if="{{hasMore}}">
+    <view class="loadMore loading">
+      <text>上拉加载更多...</text>
+    </view>
+  </block>
+ <block wx:else>
+  <view  class="loadMore">
+    <text>没有更多数据了</text>
+  </view>
+  </block>
+
+</view>
